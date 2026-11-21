@@ -15,12 +15,12 @@ Protect the Worker with Cloudflare Access before entering personal property deta
 ## Use
 1. Sign in to the owner-only site.
 2. Add properties and their location details.
-3. Add dated property value snapshots; two snapshots are needed for a value history chart.
-4. Use Run now for official macro feeds. Address-level valuations are not refreshed automatically.
+3. Add dated property value snapshots; two snapshots are needed for a value history chart. Snapshots support user estimates, verified public-listing asking prices, manually transcribed property.com.au estimates, bank valuations, licensed-provider estimates, and sale results. Optional HTTPS source URLs are retained in the snapshot notes.
+4. Use Run now for official macro feeds. It reports that address-level property prices were not fetched when no authorized provider is configured.
 5. Export your portfolio data whenever needed.
 
 ## Data limits
-ABS and RBA data currently cover Australia only. Property values are user-entered; no valuation provider is configured. Regional cycle assessments remain insufficient unless you add a dated assessment and evidence.
+ABS and RBA data currently cover Australia only. No address-level property valuation feed is configured. property.com.au publishes PropTrack-derived estimates, but its [terms](https://www.property.com.au/legal/) prohibit automated retrieval/scraping and use of its content to build a property-data product. Do not automate access without written authorization and a suitable license. For now, manually enter the estimate and source URL. Elsewhere, enter a verified public listing's asking price as an asking price (not as a valuation), or use a manual estimate. Existing dated value records are retained across refreshes and when a property is archived; snapshots are appended only when a new value is actually supplied.
 
 ## Cloudflare deployment
 Requires Node.js 20+. The repo includes wrangler.jsonc for the property-market-tracker Worker and dedicated D1 database. For local deployment run npm install, npm run build, npm run db:migrate:remote, and npm run deploy. To deploy from GitHub, connect this repository in Workers & Pages → Create → Connect to Git, select main, and set build command to npm run build. Apply D1 migrations before first use, and protect the Worker with Cloudflare Access allowing only your email.
