@@ -57,11 +57,20 @@ function parseAreaDwellingTable(html,timestamp){
    try{
     headers=JSON.parse(match[0]);
     const tail=source.slice(match.index+match[0].length,match.index+match[0].length+12000);
-    const start=tail.indexOf("[[");
-    if(start<0)continue;
-    const raw=balancedJson(tail,start);
-    if(!raw)continue;
-    data=JSON.parse(raw);
+    let cursor=0;
+    while(true){
+     const start=tail.indexOf("[[",cursor);
+     if(start<0)break;
+     const raw=balancedJson(tail,start);
+     cursor=start+2;
+     if(!raw)continue;
+     try{
+      const candidate=JSON.parse(raw);
+      const areas=Array.isArray(candidate?.[0])?candidate[0]:[];
+      if(areas.includes("Australia")&&areas.includes("QLD")){data=candidate;break}
+     }catch{}
+    }
+    if(!data)continue;
    }catch{continue}
    const areas=Array.isArray(data?.[0])?data[0]:[];
    if(!areas.includes("Australia")||!areas.includes("QLD"))continue;
