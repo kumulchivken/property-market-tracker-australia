@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "property-market-tracker",
+  "main": "dist/server/index.js",
+  "compatibility_date": "2026-11-21",
+  "workers_dev": true,
+  "build": { "command": "npm run build" },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "property-market-tracker",
+      "database_id": "9241bfcc-70e4-4264-bab2-7116beb07a4e",
+      "migrations_dir": "drizzle"
+    }
+  ]
+}
