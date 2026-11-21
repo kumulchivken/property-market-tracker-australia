@@ -1,6 +1,6 @@
 # Build brief: Australian Property & Market Cycle Tracker
 
-Act as a senior full-stack engineer and product designer. Create a secure, responsive website and a private GitHub repository named `property-market-tracker-australia`. The website lets me track residential properties I choose, refresh property and economic data when I want, and review regional property-market cycle indicators. Do not deploy publicly or expose my property addresses.
+Act as a senior full-stack engineer and product designer. Work in the existing private GitHub repository `kumulchivken/property-market-tracker-australia`; do not create a second repository. Build a secure, responsive website that lets me track residential properties I choose, refresh property and economic data when I want, and review regional property-market cycle indicators. Do not deploy publicly or expose my property addresses.
 
 ## Main user flow
 
@@ -53,7 +53,7 @@ Property clocks are not a single official government statistic and methodologies
 - Use an appropriate lightweight chart library and test keyboard/touch interactions.
 - Add a README with setup, data-provider configuration, privacy model, refresh behavior, schedule setup, and deployment instructions.
 - Add safe sample data only if it is clearly labeled as fictional; never mix it with my portfolio.
-- Create the private GitHub repository, commit the implementation, configure deployment, and return the repository and live-site URLs. If GitHub authentication, licensed property data, or hosting credentials are unavailable, explain the exact missing access and complete all work possible without fabricating values or credentials.
+- Commit the implementation to this existing private repository and configure a private, access-controlled deployment when hosting credentials are available. Return the repository and live-site URLs. If GitHub access, licensed property data, or hosting credentials are unavailable, explain the exact missing access and complete all work possible without fabricating values or credentials.
 
 ## Acceptance checks
 
