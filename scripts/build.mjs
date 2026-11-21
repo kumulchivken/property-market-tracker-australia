@@ -1,0 +1,10 @@
+import { readFileSync, writeFileSync, mkdirSync, cpSync } from 'node:fs';
+import { dirname, resolve } from 'node:path';
+const root=resolve(import.meta.dirname,'..');
+const html=readFileSync(resolve(root,'public/index.html'),'utf8');
+let worker=readFileSync(resolve(root,'worker/index.js'),'utf8');
+worker=worker.replace('__HTML__',JSON.stringify(html));
+const out=resolve(root,'dist/server/index.js');mkdirSync(dirname(out),{recursive:true});writeFileSync(out,worker);
+mkdirSync(resolve(root,'dist/.openai'),{recursive:true});cpSync(resolve(root,'.openai/hosting.json'),resolve(root,'dist/.openai/hosting.json'));
+cpSync(resolve(root,'drizzle'),resolve(root,'dist/.openai/drizzle'),{recursive:true});
+console.log('Built Worker and included hosting manifest plus D1 migration.');
