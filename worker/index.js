@@ -95,7 +95,7 @@ async function storeMacro(db,uid,metrics){let saved=0;for(let i=0;i<metrics.leng
 async function refreshAndStore(db,uid){
  const start=nowISO(),got=await getMacro(),saved=await storeMacro(db,uid,got.metrics),finish=nowISO(),rid=id();
  await db.prepare("INSERT INTO refresh_runs(id,user_id,started_at,finished_at,summary) VALUES(?,?,?,?,?)").bind(rid,uid,start,finish,JSON.stringify({saved,errors:got.errors,trigger:"scheduled-or-manual"})).run();
- return{saved,errors:got.errors,retrieved_at:finish};
+ return{saved,errors:got.errors,retrieved_at:finish,property_values_saved:0,property_source_status:"not_configured"};
 }
 async function handler(req,env){const url=new URL(req.url);const path=url.pathname;if(path==="/"||path==="/index.html")return new Response(PAGE,{headers:{"content-type":"text/html; charset=utf-8","cache-control":"no-store","x-content-type-options":"nosniff","referrer-policy":"no-referrer","content-security-policy":"default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self'; base-uri 'none'; frame-ancestors 'none'"}});if(!path.startsWith("/api/"))return new Response("Not found",{status:404});const uid=userId(req);if(!env.DB)return json({error:"Database is not provisioned yet."},503);const db=env.DB;
 try{
