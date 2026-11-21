@@ -1,6 +1,6 @@
 # Build brief: Australian Property & Market Cycle Tracker
 
-Act as a senior full-stack engineer and product designer. Work in the existing private GitHub repository `kumulchivken/property-market-tracker-australia`; do not create a second repository. Build a secure, responsive website that lets me track residential properties I choose, refresh property and economic data when I want, and review regional property-market cycle indicators. Do not deploy publicly or expose my property addresses.
+Act as a senior full-stack engineer and product designer. Work in the existing public GitHub repository `kumulchivken/property-market-tracker-australia`; do not create a second repository. Build a secure, responsive website that lets me track residential properties I choose, refresh property and economic data when I want, and review regional property-market cycle indicators. The source repository is public, but portfolio data and owner-only app access must remain private. A public website must not expose personal property addresses, values, notes, or account data.
 
 ## Main user flow
 
@@ -41,7 +41,7 @@ Property clocks are not a single official government statistic and methodologies
 
 ## Privacy and security
 
-- Make the GitHub repository private and the website access-controlled by default. Do not make either public without my explicit request.
+- Keep portfolio data and the authenticated personal dashboard access-controlled. The GitHub source repository is public by explicit user request. Do not publish personal portfolio data. If a public website is requested, build a separate public-safe view with no access to private portfolio records; do not simply remove authentication from the personal dashboard.
 - Treat full street addresses and portfolio values as sensitive. Minimize collection, encrypt transport, enforce authenticated access, and do not include addresses or values in analytics, public URLs, client error logs, or source-control fixtures.
 - Keep secrets in the hosting provider’s secret manager, never in the repository or browser bundle. Include `.env.example` with names only and a clear setup guide.
 - Provide export and delete controls for my portfolio data.
@@ -53,7 +53,7 @@ Property clocks are not a single official government statistic and methodologies
 - Use an appropriate lightweight chart library and test keyboard/touch interactions.
 - Add a README with setup, data-provider configuration, privacy model, refresh behavior, schedule setup, and deployment instructions.
 - Add safe sample data only if it is clearly labeled as fictional; never mix it with my portfolio.
-- Commit the implementation to this existing private repository and configure a private, access-controlled deployment when hosting credentials are available. Return the repository and live-site URLs. If GitHub access, licensed property data, or hosting credentials are unavailable, explain the exact missing access and complete all work possible without fabricating values or credentials.
+- Commit the implementation to this existing public source repository and configure an access-controlled deployment for the personal dashboard when hosting credentials are available. A separate public-safe deployment may be configured only after it is isolated from personal records. Return the repository and live-site URLs. If GitHub access, licensed property data, or hosting credentials are unavailable, explain the exact missing access and complete all work possible without fabricating values or credentials.
 
 ## Acceptance checks
 
