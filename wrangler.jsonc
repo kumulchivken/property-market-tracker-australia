@@ -4,7 +4,9 @@
   "main": "dist/server/index.js",
   "compatibility_date": "2026-11-21",
   "workers_dev": true,
-  "build": { "command": "npm run build" },
+  "build": {
+    "command": "npm run build"
+  },
   "d1_databases": [
     {
       "binding": "DB",
@@ -12,5 +14,10 @@
       "database_id": "9241bfcc-70e4-4264-bab2-7116beb07a4e",
       "migrations_dir": "drizzle"
     }
-  ]
+  ],
+  "triggers": {
+    "crons": [
+      "0 16 * * *"
+    ]
+  }
 }
