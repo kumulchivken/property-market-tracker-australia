@@ -1,17 +1,33 @@
 # Australian Property & Market Cycle Tracker
 
-Private starter repository for building a personal property portfolio dashboard. The full implementation brief is in [`BUILD_PROMPT.md`](BUILD_PROMPT.md).
+Private dashboard project for dated property valuations, official Australian economic indicators, and transparent regional property-cycle notes.
 
-## Use the same project with Codex, Claude Code, or Manus
+## Current app source
 
-1. Clone or open this repository in the tool you want to use.
-2. Ask the agent to read `README.md`, `BUILD_PROMPT.md`, and the platform notes (`AGENTS.md`, `CLAUDE.md`, or `MANUS.md`).
-3. Paste the full contents of `BUILD_PROMPT.md` as the build request, or say: “Implement the requirements in `BUILD_PROMPT.md` in this repository.”
-4. Have the agent commit changes to this repository. Keep the repository private because it is intended to manage personal property addresses and valuations.
-5. Configure licensed property-data credentials and hosting secrets only in the chosen host's secret manager. Do not commit addresses, real portfolio values, API keys, or `.env` files.
+- [Download the complete source and build artifact](property-market-tracker-source.zip).
+- The authenticated Worker source is also available under [worker/](tree/main/worker).
+- The archive contains the D1 schema migration, responsive dashboard, build script, hosting manifest, and setup guide.
 
-The GitHub repo stores the shared source and brief. The app still needs to be implemented, connected to a secure database and data providers, and deployed before it can be used as a live tracker.
+## Features
 
-## Data integrity
+- Add, edit, archive, restore, export properties, and record dated values.
+- Keep private property details scoped to the signed-in account in D1.
+- Compare nominal property values with CPI-adjusted indexed history.
+- Refresh official ABS CPI / unemployment data and RBA cash-rate history.
+- View four regional cycle dials; these remain “Insufficient data” until backed by evidence or a dated manual note.
+- Choose off, daily, or weekly macro refresh while the dashboard is open. No unattended cadence is enabled.
 
-Property clocks are transparent estimates, not official forecasts. Address-level prices must come from user-entered snapshots or a licensed provider. Macroeconomic series should show the official source, reference period, and release date.
+Property values are manual unless a licensed provider is configured. No real portfolio data or addresses are included in source control.
+
+## Build
+
+Requires Node.js 20+. Extract the source archive and run `node scripts/build.mjs`. The generated Worker is in `dist/server/index.js`. Configure the private Sites project in `.openai/hosting.json` and deploy through the authenticated Sites hosting workflow. Keep the repository private.
+
+## Data sources
+
+- [ABS Data API](https://data.api.abs.gov.au/rest/)
+- [ABS CPI](https://www.abs.gov.au/statistics/economy/price-indexes-and-inflation/consumer-price-index-australia)
+- [ABS Labour Force](https://www.abs.gov.au/statistics/labour/employment-and-unemployment/labour-force-australia)
+- [RBA Cash Rate Target](https://www.rba.gov.au/statistics/cash-rate/)
+
+This app source has been committed to the private repository. Hosting deployment is pending because the Sites source Git host is not resolving from the current build environment.
